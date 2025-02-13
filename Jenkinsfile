@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Cloner le dépôt
-                git branch: 'main', url: 'https://github.com/Oumayma-BenBrahem/workshop-Auth.git'
+                git branch: 'master', url: 'https://github.com/oumaymabenbrahem/ateliergit.git'
             }
         }
 
