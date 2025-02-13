@@ -4,31 +4,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Cloner le dépôt
-                git branch: 'master', url: 'https://github.com/oumaymabenbrahem/ateliergit.git'
+                git branch: 'main', url: 'https://github.com/oumaymabenbrahem/ateliergit.git'
+            }
+        }
+
+        stage('Prepare Environment') {
+            steps {
+                sh 'java -version' // Vérifier que Java est installé
+                sh 'gradle -v' // Vérifier que Gradle est installé
             }
         }
 
         stage('Build') {
             steps {
-                // Commandes pour construire ton projet
-                sh './gradlew build' // Si c'est un projet Java avec Gradle
-                // mvn clean install (si Maven est utilisé)
-                // npm install (si c'est un projet Node.js)
+                sh 'gradle build' // Construire le projet avec Gradle global
             }
         }
 
         stage('Test') {
             steps {
-                // Exécuter les tests
-                sh './gradlew test' // Exemple pour Gradle
-                // sh 'npm test' ou autres selon ton projet
+                sh 'gradle test' // Exécuter les tests
             }
         }
 
         stage('Deploy') {
             steps {
-                // Déployer ton projet (ajouter ta logique ici)
                 echo 'Déploiement en cours...'
             }
         }
